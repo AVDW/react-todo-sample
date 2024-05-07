@@ -1,0 +1,18 @@
+
+on:
+  push:
+    branches:
+    - main
+    - release/*
+  
+jobs:
+  buildWebsite:
+    name: deploy to staging
+    runs-on: node
+    steps:
+      - name: Install Dependencies
+        run: npm install
+      - name: Build app
+        run: npm run build-prod
+
+
