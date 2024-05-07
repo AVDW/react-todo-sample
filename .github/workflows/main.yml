@@ -1,3 +1,4 @@
+name: Build the frontend project
 
 on:
   push:
@@ -8,11 +9,16 @@ on:
 jobs:
   buildWebsite:
     name: deploy to staging
-    runs-on: node
+    runs-on: ubuntu-latest
     steps:
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4.0.2
+        with:
+          node-version: '20.x'
+          
+      - uses: actions/checkout@v4  
+
       - name: Install Dependencies
         run: npm install
-      - name: Build app
-        run: npm run build-prod
 
 
